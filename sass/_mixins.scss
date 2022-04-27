@@ -10,3 +10,18 @@
     align-items: $horisontal;
   }
 }
+
+@mixin logo($color, $hoverColor) {
+  @include flex($horisontal: flex-start, $vertical: center);
+  font-size: 3rem;
+  color: $color;
+  font-weight: 700;
+  &:hover {
+    color: $hoverColor;
+  }
+  img {
+    margin-right: 20px;
+    height: 3em;
+    width: auto;
+  }
+}

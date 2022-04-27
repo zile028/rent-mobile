@@ -10,29 +10,36 @@ nav {
   .container {
     @include flex($vertical: center);
   }
-
+  .logo {
+    @include logo($navLinkColor, $hoverLinkColor);
+  }
   .navbar {
     ul {
       @include flex($vertical: center);
       gap: 50px;
       font-size: 2rem;
       color: $navLinkColor;
+      a {
+        &:after {
+          content: "";
+          width: 0;
+          height: 3px;
+          display: block;
+          background-color: $navLinkColor;
+          transition: width $transition;
+        }
+        &:hover {
+          color: $hoverLinkColor;
+          &:after {
+            width: 100%;
+            background-color: $hoverLinkColor;
+          }
+        }
+      }
     }
     .active {
       &::after {
-        content: "";
         width: 20px;
-        height: 3px;
-        background-color: $navLinkColor;
-        display: block;
-        transition: width $transition;
-      }
-      &:hover {
-        color: $hoverLinkColor;
-        &:after {
-          width: 100%;
-          background-color: $hoverLinkColor;
-        }
       }
     }
   }
@@ -88,7 +95,7 @@ header {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 7rem;
+      font-size: 3vw;
     }
   }
 }
@@ -121,4 +128,51 @@ header {
 /***** footer ****/
 
 footer {
+  background-color: $secondaryFontColor;
+  .logo {
+    @include logo($primaryFontColor, $hoverLinkColor);
+  }
+  article {
+    @include flex($vertical: center);
+    &:first-child {
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      border-bottom: 2px solid rgba($lightGray, 0.2);
+      ul {
+        @include flex;
+        gap: 30px;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+    }
+    &:last-child {
+      align-items: flex-start;
+      gap: 30px;
+      div {
+        flex: 1;
+        line-height: 1.8;
+        &:first-child {
+          flex: 2;
+        }
+      }
+      i {
+        font-size: 3rem;
+        margin-right: 10px;
+      }
+    }
+  }
+  h4 {
+    margin-bottom: 30px;
+  }
+  a {
+    &:hover {
+      &:hover {
+        color: $hoverLinkColor;
+      }
+    }
+  }
+  iframe {
+    width: 100%;
+    height: 200px;
+  }
 }
