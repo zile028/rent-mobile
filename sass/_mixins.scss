@@ -1,12 +1,12 @@
-@mixin flex($horizontal: space-between, $vertical: stretch, $direction: row) {
+@mixin flex($horisontal: space-between, $vertical: stretch, $direction: row) {
   display: flex;
   flex-wrap: wrap;
   flex-direction: $direction;
   @if ($direction== "row") {
-    justify-content: $horizontal;
+    justify-content: $horisontal;
     align-items: $vertical;
-  } @else if($direction== "columne") {
+  } @else if($direction== "column") {
     justify-content: $vertical;
-    align-items: $horizontal;
+    align-items: $horisontal;
   }
 }

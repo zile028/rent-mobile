@@ -13,13 +13,16 @@ nav {
   .logo {
     @include flex($vertical: center);
     font-size: 3rem;
-    color: $logoColor;
+    color: $navLinkColor;
+    text-shadow: 0 0 2px white;
+    font-weight: 700;
     &:hover {
-      color: rgba($logoColor, 0.5);
+      color: $hoverLinkColor;
     }
     img {
       margin-right: 20px;
       height: 3em;
+      width: auto;
     }
   }
   .navbar {
@@ -28,19 +31,103 @@ nav {
       gap: 50px;
       font-size: 2rem;
       color: $navLinkColor;
-      a {
-        &::after {
-          content: "";
-          width: 20px;
-          height: 3px;
-          background-color: $navLinkColor;
-          display: block;
-          transition: width $transition;
-        }
-        &:hover:after {
+    }
+    .active {
+      &::after {
+        content: "";
+        width: 20px;
+        height: 3px;
+        background-color: $navLinkColor;
+        display: block;
+        transition: width $transition;
+      }
+      &:hover {
+        color: $hoverLinkColor;
+        &:after {
           width: 100%;
+          background-color: $hoverLinkColor;
         }
       }
+    }
+  }
+}
+
+/***** header ****/
+
+header {
+  background: linear-gradient(
+      60deg,
+      rgba($navLinkColor, 0.6),
+      rgba($hoverLinkColor, 0.6)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  min-height: 900px;
+  @include flex($vertical: center, $horisontal: flex-start, $direction: column);
+  p {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+}
+
+/***** popular phone ****/
+
+.popular {
+  @include flex(
+    $horisontal: space-between,
+    $vertical: stretch,
+    $direction: row
+  );
+  gap: 30px;
+  article {
+    @include flex(stretch, center, column);
+    gap: 30px;
+    flex: 1;
+  }
+  .img-holder {
+    position: relative;
+    flex: 1;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover {
+      img {
+        transform: scale(110%);
+      }
+    }
+    img {
+      transition: transform $transition;
+    }
+    h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 7rem;
+    }
+  }
+}
+
+/***** products ****/
+
+.products {
+  @include flex();
+  gap: 30px;
+  .card {
+    flex: 1;
+    color: $secondaryFontColor;
+    text-align: center;
+    &-header {
+      padding: 15px 0;
+      h3 {
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+    }
+    &-body {
+      padding: 15px 0;
+    }
+    &-footer {
+      padding: 15px 0;
     }
   }
 }
