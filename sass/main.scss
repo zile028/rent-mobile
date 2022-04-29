@@ -45,9 +45,9 @@ nav {
   }
 }
 
-/***** header ****/
+/***** hero ****/
 
-header {
+.hero {
   background: linear-gradient(
       60deg,
       rgba($navLinkColor, 0.6),
@@ -66,22 +66,24 @@ header {
 /***** popular phone ****/
 
 .popular {
-  @include flex(
-    $horisontal: space-between,
-    $vertical: stretch,
-    $direction: row
-  );
-  gap: 30px;
   article {
-    @include flex(stretch, center, column);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
-    flex: 1;
+    max-height: 600px;
+    div:first-child {
+      grid-row: 1/3;
+    }
   }
   .img-holder {
     position: relative;
     flex: 1;
     cursor: pointer;
     overflow: hidden;
+    box-shadow: 0 0 5px 2px rgba($secondaryFontColor, 0.5);
+    text-shadow: 0 0 5px $secondaryFontColor;
+    border-radius: 10px;
     &:hover {
       img {
         transform: scale(110%);
@@ -89,6 +91,7 @@ header {
     }
     img {
       transition: transform $transition;
+      filter: brightness(0.6);
     }
     h2 {
       position: absolute;
